@@ -14,6 +14,11 @@ const App = () => {
     console.log('current userText', userText);
   }
 
+  const chooseSnippet = snippetIndex => () => {
+    console.log("setSnippet", snippetIndex);
+    setSnippet(SNIPPETS[snippetIndex]);
+  };
+
   return (
     <div>
       <h2>Type Race</h2>
