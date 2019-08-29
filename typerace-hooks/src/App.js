@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const App = () => {
   const SNIPPETS = [
@@ -10,6 +10,10 @@ const App = () => {
   const [snippet, setSnippet] = useState('');
   const [userText, setUserText] = useState('');
   const [gameState, setGameState] = useState(INITIAL_GAME_STATE);
+
+  useEffect(() => {
+    if (gameState.victory) document.title = 'Victory!'
+  });
 
   const updateUserText = event => {
     setUserText(event.target.value);
