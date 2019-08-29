@@ -38,6 +38,9 @@ const App = () => {
       <hr />
       <h3>Snippet</h3>
       {snippet}
+      <h4>
+        {gameState.victory ? `Done! 🎉 Time: ${gameState.endTime}ms` : null}
+      </h4>
       <input value={userText} onChange={updateUserText} />
       <hr />
       {SNIPPETS.map((SNIPPET, index) => (
