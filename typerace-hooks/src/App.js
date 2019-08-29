@@ -8,6 +8,7 @@ const App = () => {
   ];
   const [snippet, setSnippet] = useState('');
   const [userText, setUserText] = useState('');
+  const [gameState, setGameState] = useState({});
 
   const updateUserText = event => {
     setUserText(event.target.value);
