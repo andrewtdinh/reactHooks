@@ -25,6 +25,10 @@ const App = () => {
   const chooseSnippet = snippetIndex => () => {
     console.log("setSnippet", snippetIndex);
     setSnippet(SNIPPETS[snippetIndex]);
+    setGameState({
+      ...gameState,
+      startTime: new Date().getTime(),
+    })
   };
 
   return (
