@@ -6,9 +6,10 @@ const App = () => {
     "What's Forrest Gump's password? 1Forrest1",
     'Where do programmers like to hangout? The Foo Bar'
   ];
+  const INITIAL_GAME_STATE = { victory: false, startTime: null, endTime: null };
   const [snippet, setSnippet] = useState('');
   const [userText, setUserText] = useState('');
-  const [gameState, setGameState] = useState({});
+  const [gameState, setGameState] = useState(INITIAL_GAME_STATE);
 
   const updateUserText = event => {
     setUserText(event.target.value);
