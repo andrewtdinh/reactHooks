@@ -11,7 +11,14 @@ const App = () => {
 
   const updateUserText = event => {
     setUserText(event.target.value);
-    console.log('current userText', userText);
+
+    if (event.target.value === snippet) {
+      setGameState({
+        ...gameState,
+        victory: true,
+        endTime: new Date().getTime() - gameState.startTime,
+      })
+    }
   }
 
   const chooseSnippet = snippetIndex => () => {
