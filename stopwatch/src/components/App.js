@@ -1,0 +1,38 @@
+import React from 'react';
+
+class App extends React.Component {
+  state = {
+    resource: 'posts',
+    time: 0,
+    running: false,
+  };
+
+  interval;
+
+  render() {
+    return (
+      <div>
+        <div>
+          <button onClick={() => {
+              if (!this.state.running) {
+                this.interval = setInterval(() => this.setState({
+                  running: true,
+                  time: this.state.time + 1,
+                }), 1000)
+              } else {
+                clearInterval(this.interval);
+                this.setState({ running: false })
+              }
+            }}
+          >
+            Start
+          </button>
+          <button onClick={() => this.setState({ resource: 'todos'})}>Nothing</button>
+        </div>
+        {this.state.time}
+      </div>
+    )
+  }
+}
+
+export default App;
