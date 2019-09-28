@@ -2,17 +2,34 @@ import React from 'react';
 
 class App extends React.Component {
   state = {
-    resource: 'posts'
+    resource: 'posts',
+    time: 0,
+    running: false,
   };
+
+  interval;
 
   render() {
     return (
       <div>
         <div>
-          <button onClick={() => this.setState({ resource: 'posts'})}>Posts</button>
-          <button onClick={() => this.setState({ resource: 'todos'})}>Todos</button>
+          <button onClick={() => {
+              if (!this.state.running) {
+                this.interval = setInterval(() => this.setState({
+                  running: true,
+                  time: this.state.time + 1,
+                }), 1000)
+              } else {
+                clearInterval(this.interval);
+                this.setState({ running: false })
+              }
+            }}
+          >
+            Start
+          </button>
+          <button onClick={() => this.setState({ resource: 'todos'})}>Nothing</button>
         </div>
-        {this.state.resource}
+        {this.state.time}
       </div>
     )
   }
