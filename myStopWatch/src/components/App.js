@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
 
+
 const App = () => {
-  // state = {
-  //   time: 0,
-  //   running: false,
-  // };
+  let interval;
   let [time, setTime] = useState(0);
   let [running, setRunning] = useState(false);
-  let interval;
+  
+  const handleStartStop = () => {
+    if (!running) {
+      interval = setInterval(() => setTime(time + 1), 1000);
+    } else {
+      if (interval) {
+        clearInterval(interval);
+      }
+    }
+    setRunning(!running);
+  }
 
   return (
     <div>
       <div>
-        <button onClick={() => {
-            if (!running) {
-              setRunning({ running: !running})
-              interval = setInterval(() => setTime(time + 1), 1000);
-            } else {
-              setRunning({ running: !running})
-              if (interval) {
-                clearInterval(interval);
-              }
-            }
-          }}
-        >
+        <button onClick={handleStartStop}>
           {running ? 'Stop' : 'Start'}
         </button>
         <button onClick={() => setTime(0)}>Reset Time</button>
