@@ -1,37 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class App extends React.Component {
-  state = {
-    time: 0,
-    running: false,
-  };
+const App = () => {
+  // state = {
+  //   time: 0,
+  //   running: false,
+  // };
+  let [time, setTime] = useState(0);
+  let [running, setRunning] = useState(false);
+  let interval;
 
-  interval;
-
-  render() {
-    return (
+  return (
+    <div>
       <div>
-        <div>
-          <button onClick={() => {
-              if (!this.state.running) {
-                this.interval = setInterval(() => this.setState({
-                  running: true,
-                  time: this.state.time + 1,
-                }), 1000)
-              } else {
-                clearInterval(this.interval);
-                this.setState({ running: false })
+        <button onClick={() => {
+            if (!running) {
+              setRunning({ running: !running})
+              interval = setInterval(() => setTime(time + 1), 1000);
+            } else {
+              setRunning({ running: !running})
+              if (interval) {
+                clearInterval(interval);
               }
-            }}
-          >
-            {this.state.running ? 'Stop' : 'Start'}
-          </button>
-          <button onClick={() => this.setState({ time: 0 })}>Reset Time</button>
-        </div>
-        {this.state.time}
+            }
+          }}
+        >
+          {running ? 'Stop' : 'Start'}
+        </button>
+        <button onClick={() => setTime(0)}>Reset Time</button>
       </div>
-    )
-  }
+      {time}
+    </div>
+  )
 }
 
 export default App;
