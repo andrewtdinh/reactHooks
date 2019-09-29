@@ -2,7 +2,6 @@ import React from 'react';
 
 class App extends React.Component {
   state = {
-    resource: 'posts',
     time: 0,
     running: false,
   };
@@ -27,7 +26,7 @@ class App extends React.Component {
           >
             Start
           </button>
-          <button onClick={() => this.setState({ resource: 'todos'})}>Nothing</button>
+          <button onClick={() => this.setState({ time: 0 })}>Reset Time</button>
         </div>
         {this.state.time}
       </div>
