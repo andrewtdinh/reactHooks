@@ -24,7 +24,7 @@ class App extends React.Component {
               }
             }}
           >
-            Start
+            {this.state.running ? 'Stop' : 'Start'}
           </button>
           <button onClick={() => this.setState({ time: 0 })}>Reset Time</button>
         </div>
