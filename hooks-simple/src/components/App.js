@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const App = () => {
-  const [resource, setResource] = useState('posts')
+  const [resource, setResource] = useState('Posts')
 
   return (
     <div>
