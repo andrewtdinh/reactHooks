@@ -5,12 +5,25 @@ const App = () => {
   let interval;
   let [time, setTime] = useState(0);
   let [running, setRunning] = useState(false);
-  
-  const handleStartStop = () => {
+
+  const handleStartStop = (e) => {
     if (!running) {
-      interval = setInterval(() => setTime(time + 1), 1000);
+      if (!!interval) {
+        clearInterval(interval);
+        interval = setInterval(() => {
+          const currentTime = parseInt(document.querySelector('#time-display').innerHTML);
+          console.log({currentTime});
+          setTime(currentTime + 1)
+        }, 1000);
+      } else {
+        interval = setInterval(() => {
+          const currentTime = parseInt(document.querySelector("#time-display").innerHTML);
+          console.log({ currentTime });
+          setTime(currentTime + 1);
+        }, 1000);
+      }
     } else {
-      if (interval) {
+      if (!!interval) {
         clearInterval(interval);
       }
     }
@@ -25,7 +38,9 @@ const App = () => {
         </button>
         <button onClick={() => setTime(0)}>Reset Time</button>
       </div>
-      {time}
+      <div id="time-display">
+        {time}
+      </div>
     </div>
   )
 }
