@@ -1,6 +1,6 @@
 import React from 'react';
 
-class App extends React.Component {
+class AppClass extends React.Component {
   state = {
     resource: 'posts'
   };
@@ -18,4 +18,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default AppClass;
