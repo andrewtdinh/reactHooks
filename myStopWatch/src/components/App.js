@@ -8,24 +8,13 @@ const App = () => {
 
   const handleStartStop = (e) => {
     if (!running) {
-      if (!!interval) {
-        clearInterval(interval);
-        interval = setInterval(() => {
-          const currentTime = parseInt(document.querySelector('#time-display').innerHTML);
-          console.log({currentTime});
-          setTime(currentTime + 1)
-        }, 1000);
-      } else {
-        interval = setInterval(() => {
-          const currentTime = parseInt(document.querySelector("#time-display").innerHTML);
-          console.log({ currentTime });
-          setTime(currentTime + 1);
-        }, 1000);
-      }
+      clearInterval(interval);
+      interval = setInterval(() => {
+        const currentTime = parseInt(document.querySelector('#time-display').innerHTML);
+        setTime(currentTime + 1)
+      }, 1000);
     } else {
-      if (!!interval) {
-        clearInterval(interval);
-      }
+      clearInterval(interval);
     }
     setRunning(!running);
   }
