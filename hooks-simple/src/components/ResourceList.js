@@ -15,7 +15,11 @@ const ResourceList = ({ resource }) => {
     [resource]
   );
 
-  return (<div>{resources.length}</div>)
+  return (
+    resources.map((record) => (
+      <li key={record.id}>{record.title}</li>
+    ))
+  )
 }
 
 export default ResourceList;
