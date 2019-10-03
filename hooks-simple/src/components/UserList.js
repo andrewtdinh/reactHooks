@@ -11,7 +11,6 @@ const UserList = () => {
       })}
     </ul>
   )
-
 }
 
 export default UserList;
