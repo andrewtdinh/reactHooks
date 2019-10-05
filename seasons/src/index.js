@@ -5,7 +5,7 @@ import Spinner from './Spinner';
 import { useState, useEffect } from 'react';
 
 const App = (props) => {
-  const [lat, setLat] = useState();
+  const [lat, setLat] = useState(null);
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
@@ -16,19 +16,16 @@ const App = (props) => {
     []
   )
 
-  const renderContent = () => {
-    if (errorMessage && !lat) {
-      return <div>Error: {errorMessage}</div>;
-    }
+  let content;
+  if (errorMessage) {
+    content = <div>Error: {errorMessage}</div>
+  } else if (lat) {
+    content = <SeasonDisplay lat={lat} />;
+  } else {
+    content = <Spinner message="Please accept location request" />;
+  }
 
-    if (!errorMessage && lat) {
-      return <SeasonDisplay lat={lat} />;
-    }
-
-    return <Spinner message="Please accept location request" />;
-  };
-
-  return <div className="border red">{renderContent()}</div>;
+  return <div className="border red">{content}</div>;
 }
 
 ReactDOM.render(<App />, document.querySelector('#root'));
