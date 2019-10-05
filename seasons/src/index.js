@@ -5,16 +5,7 @@ import Spinner from './Spinner';
 import { useState, useEffect } from 'react';
 
 const App = (props) => {
-  const [lat, setLat] = useState(null);
-  const [errorMessage, setErrorMessage] = useState('')
-
-  useEffect(() => {
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => setLat(position.coords.latitude),
-      (err) => setErrorMessage(err)
-    )},
-    []
-  )
+  
 
   let content;
   if (errorMessage) {
