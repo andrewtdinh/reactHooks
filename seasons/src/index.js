@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
 import Spinner from './Spinner';
-import { useState, useEffect } from 'react';
+import useLocation from './useLocation';
 
 const App = (props) => {
-  
+  const [lat, errorMessage] = useLocation();
 
   let content;
   if (errorMessage) {
